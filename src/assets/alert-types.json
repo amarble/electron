@@ -1,0 +1,7 @@
+[{"id": 1, "name": "Leaky faucet in kitchen", "severity": 1},
+{"id": 2, "name": "Light bulb needs replaced", "severity": 1},
+{"id": 3, "name": "Kitchen equipment malfunction", "severity": 2},
+{"id": 4, "name": "Stocked items running low", "severity": 2},
+{"id": 5, "name": "Power outage", "severity": 3},
+{"id": 6, "name": "Belligerent customer", "severity": 3},
+{"id": 7, "name": "Safety emergency", "severity": 4}]

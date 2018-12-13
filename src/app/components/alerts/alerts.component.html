@@ -1,0 +1,29 @@
+<table mat-table [dataSource]="tableSource">
+	<ng-container matColumnDef="name">
+		<th mat-header-cell *matHeaderCellDef>Alert</th>
+		<td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+	</ng-container>
+	<ng-container matColumnDef="username">
+		<th mat-header-cell *matHeaderCellDef>Reported By</th>
+		<td mat-cell *matCellDef="let element"> {{ element.user.name }} </td>
+	</ng-container>
+	<ng-container matColumnDef="issued">
+		<th mat-header-cell *matHeaderCellDef>Time</th>
+		<td mat-cell *matCellDef="let element"> {{ element.issued | date:'shortTime' }} </td>
+	</ng-container>
+	<ng-container matColumnDef="resolved">
+		<th mat-header-cell *matHeaderCellDef>Resolved</th>
+		<td mat-cell *matCellDef="let element"> {{ element.resolved | date:'shortTime' }} </td>
+	</ng-container>
+	<ng-container matColumnDef="actions">
+		<th mat-header-cell *matHeaderCellDef></th>
+		<td mat-cell *matCellDef="let element">
+			<div class="button-group">
+				<button *ngIf="!element.resolved" mat-icon-button color="primary" (click)="markAsResolved(element.id)"><mat-icon>done</mat-icon></button>
+				<button *ngIf="!element.resolved" mat-icon-button color="primary" (click)="showOnMap(element.id)"><mat-icon>place</mat-icon></button>
+			</div>
+		</td>
+	</ng-container>
+	<tr mat-header-row *matHeaderRowDef="columns"></tr>
+	<tr mat-row *matRowDef="let row; columns: columns;" [class.urgent]="isUrgent(row.type)">
+</table>

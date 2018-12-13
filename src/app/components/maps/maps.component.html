@@ -1,0 +1,22 @@
+<agm-map [latitude]="lat" [longitude]="lon" [zoom]="zoom">
+	<agm-marker *ngFor="let userLocation of userLocations"
+		[latitude] = "userLocation.location.lat"
+		[longitude] = "userLocation.location.lon"
+		[title] = "userLocation.user.name"
+	>
+		<agm-info-window [isOpen] = "userLocation.open">
+			<div class="container">
+				<div class="header">
+					{{ userLocation.user.name }} - {{ userLocation.location.name }}
+				</div>
+				<div class="alerts" *ngFor="let alert of activeAlerts(userLocation.alerts)">
+					<mat-icon [style.color] = "getAlertColor(alert.typeId)">warning</mat-icon>
+					<span>{{ alert.issued | date:'shortTime' }} - {{ getAlertType(alert.typeId) }} </span>
+				</div>
+				<div class="alerts" *ngIf="activeAlerts(userLocation.alerts).length === 0">
+					No alerts reported
+				</div>
+			</div>
+		</agm-info-window>
+	</agm-marker>
+</agm-map>

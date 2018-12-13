@@ -1,0 +1,12 @@
+<section id="navigation">
+	<a *ngFor="let view of views" [routerLink] = "'/dashboard/' + view">
+		{{ view | titlecase }}
+		<span *ngIf="alertCount > 0 && view === 'alerts'" class="alerts">({{ alertCount }})</span>
+	</a>
+</section>
+<section id="content">
+	<app-maps *ngIf="selectedView === 'map'"></app-maps>
+	<app-people *ngIf="selectedView === 'people'"></app-people>
+	<app-locations *ngIf="selectedView === 'stations'"></app-locations>
+	<app-alerts *ngIf="selectedView === 'alerts'"></app-alerts>
+</section>

@@ -23,7 +23,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -99,6 +99,12 @@
       "root": "e2e/",
       "projectType": "application",
       "architect": {
+		"build": {
+		  "builder": "@angular-devkit/build-angular:browser",
+		  "options": {
+			"outputPath": "dist"
+		  }
+		},
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {

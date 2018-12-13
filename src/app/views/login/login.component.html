@@ -1,0 +1,10 @@
+  <form (submit)="login()">
+	<mat-form-field>
+		<input matInput placeholder="Login" [(ngModel)]="user.login" name="login">
+	</mat-form-field>
+	<mat-form-field>
+		<input type="password" matInput placeholder="Password" [(ngModel)]="user.password" name="password">
+	</mat-form-field>
+	<button mat-flat-button color="primary" type="submit">Sign In</button>
+	<div class="error" *ngIf="error">{{ error }}</div>
+  </form>
